@@ -1,0 +1,4 @@
+AddDefaultCharset utf-8
+RewriteEngine On
+RewriteBase /portal/
+RewriteRule ^.*$ index.php [NC,L]

@@ -1,0 +1,205 @@
+body {
+    /* margin-top: 75px; */
+    background-color: #f7f6f9;
+}
+headers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+    z-index: 100;
+}
+.hide {
+    display: none;
+}
+.logo {
+    width: 60px;
+}
+.c-logo {
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+}
+.c-content {
+}
+.favor_hide {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, .8);
+    position: fixed;
+    z-index: 999;
+    display: none;
+}
+.favor_add_block {
+    width: 400px;
+}
+.favor_add_but {
+    width: 100px;
+    margin: 10px 20px 10px 20px;
+}
+.fav_active {
+    background-color: orange;
+}
+/* Календарь */
+
+.cal_cell {
+    width: 14.285%;
+    border-bottom: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    padding: 50px 5px;
+    position: relative;
+}
+.cal_cell .date {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid #e1e1e1;
+    border-radius: 50%;
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+}
+.cal_cell:first-child {
+    border-left: 1px solid #e1e1e1;
+}
+.cal_cell_day {
+    width: 14.285%;
+    padding: 10px 5px 10px 5px;
+    font-size: 20px;
+    background-color: #fd0;
+    border-bottom: 1px solid #e1e1e1;
+}
+.cal_mon {
+    display: inline-block;
+    width: 200px;
+    font-size: 25px;
+}
+.cal_ajax {
+    padding: 40px 20px;
+    position: relative;
+    border-bottom: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+}
+.cal_event {
+    height: 400px;
+    margin: 10px 10px;
+    border: 1px solid #e1e1e1;
+}
+.ajax_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.cal_load {
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, .9);
+}
+.cal_load_img {
+    width: 160px;
+    height: 90px;
+}
+.arrow {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+
+
+/* Блок авторизации */
+.authorization {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+}
+.authorization .authorization_string {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.authorization .authorization_input {
+    width: 200px;
+    margin: 0 10px;
+}
+.authorization .authorization_button {
+    width: 60px;
+    margin-left: 10px;
+}
+.authorization .authorization_a {
+    width: 204px;
+    text-decoration: none;
+    color: white;
+}
+#loginerror {
+    color: white;
+}
+/* Блок регистрации */
+.regpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.regpage .regpage_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.regpage .regpage_regblock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 100%;
+}
+.regpage .regpage_label  {
+    width: 300px;
+}
+.regpage .regpage_input, .regpage .regpage_textarea, .regpage .regpage_select, .regpage .regpage_button {
+    width: 300px;
+}
+.regpage .regpage_label_centre {
+    text-align: center;
+}
+.regpage .regpage_contactblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px 10px 10px;
+    position: relative;
+}
+.regpage .regpage_buttonxc {
+    width: 15px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.regpage .regpage_hide {
+    display: none;
+}
+/* Хедер */
+.logout {
+    text-decoration: none;
+    display: block;
+    margin-right: 20px;
+    color: white;
+}

@@ -38,9 +38,12 @@ class AccountsController extends Controller
         if ($user['err'] == 'none') {
             if ($user['access'] == 99) {
                 $_SESSION['logged_admin'] = true;
+                $_SESSION['logged_user'] = $user['id'];
+                echo 'redirect===' . base_url . 'admin/id' . $user['id'];
+            } else {
+                $_SESSION['logged_user'] = $user['id'];
+                echo 'redirect===' . base_url . 'id' . $user['id'];
             }
-            $_SESSION['logged_user'] = $user['id'];
-            echo 'redirect===' . base_url . 'id' . $user['id'];
         } else {
             echo $user['err'];
         }

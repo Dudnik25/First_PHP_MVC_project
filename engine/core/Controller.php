@@ -15,7 +15,11 @@ class Controller {
         $this->session = Model::check_session();
         if ($this->session != '') {
             $this->access = Model::check_access();
-            $this->header = 'header_user.php';
+            if ($this->access == 99) {
+                $this->header = 'admin/header_admin.php';
+            } else {
+                $this->header = 'header_user.php';
+            }
         }
     }
 

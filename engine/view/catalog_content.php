@@ -1,5 +1,8 @@
 <div class="row">
     <?php
+//    echo '<pre>';
+//    print_r($data);
+//    exit();
         foreach ($data as $card):
     ?>
         <div class="col-12 mb-3">
@@ -8,7 +11,7 @@
                     <div class="row justify-content-around">
                         <div class="col-11">
                             <?php
-                                if ($access >= 2) {
+                                if ($access >= 1) {
                                     echo '<a href="id'. $card['id']. '">' .$card['name']. '</a>';
                                 } else {
                                     echo $card['name'];

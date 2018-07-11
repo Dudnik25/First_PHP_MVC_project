@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <h1 class="text-center">Страница каталога</h1>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="col-12">
             <div class="row mb-3">
                 <div class="col-12 mb-2">

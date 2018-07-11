@@ -203,3 +203,11 @@ headers {
     margin-right: 20px;
     color: white;
 }
+/* Пагинация */
+.pagination_page {
+    width: 20px;
+    cursor: pointer;
+}
+.pagination_page.active {
+    color: red;
+}

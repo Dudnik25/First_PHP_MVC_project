@@ -33,14 +33,25 @@ class CatalogModel extends Model {
 
             $commerce = (int)$data_catalog['search'];
             $curent_page = (int)$data_catalog['id'];
-            $limit = 10;
+            $limit = 8;
             $iLeft = 4;
             $iRight = 5;
-            $needles=R::count('usercommerce', 'WHERE commerce = ?', array($commerce));
+            if ($commerce != 0) {
+                $needles=R::count('usercommerce', 'WHERE commerce = ?', array($commerce));
+            } else {
+                $needles=R::getAll('SELECT Count(DISTINCT users_id) FROM usercommerce');
+                $needles = $needles[0]['Count(DISTINCT users_id)'];
+            }
+
             $totalPages=ceil($needles/$limit);
             //$totalPages = 8;
             if ($totalPages != 0) {
-                $all = R::findAll('usercommerce', 'WHERE commerce = ? ORDER BY id LIMIT ?,? ',array($commerce, (($curent_page-1)*$limit),$limit));
+                if ($commerce != 0) {
+                    $all = R::findAll('usercommerce', 'WHERE commerce = ? ORDER BY id LIMIT ?,? ',array($commerce, (($curent_page-1)*$limit),$limit));
+                } else {
+                    $all = R::getAll('SELECT DISTINCT users_id FROM usercommerce ORDER BY id LIMIT ?,? ',array((($curent_page-1)*$limit),$limit));
+                }
+
                 if (!empty($all)) {
                     foreach ($all as $value) {
                         $user_id[] = $value['users_id'];
@@ -81,7 +92,7 @@ class CatalogModel extends Model {
                         unset($companytype);
                     }
 
-                    $pagination = '<div class="row flex-row justify-content-center text-white">';
+                    $pagination = '<div class="row flex-row justify-content-center">';
                     $pagination .= '<div class="pagination_page"';
                 if (($curent_page - 1) > 0) {
                     $pagination .= ' onclick="reuestcat('. ($curent_page - 1) .')"';

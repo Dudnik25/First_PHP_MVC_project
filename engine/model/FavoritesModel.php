@@ -120,7 +120,6 @@ class FavoritesModel {
                 );
             }
         } else {
-            echo '<div class="error text-center text-white">Ничего не найдено</div>';
             return false;
         }
     }

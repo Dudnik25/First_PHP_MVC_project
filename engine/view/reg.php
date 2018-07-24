@@ -34,7 +34,7 @@ $commerce = $data['commerce'];
                     <div class="form-group">
                         <label>Страна*</label>
                         <select class="form-control" class="form-control" name="country" id="select">
-                                    <option selected disabled >Выберите из списка</option>
+                                    <option selected hidden value="none">Выберите из списка</option>
                                     <?php
                                     foreach ($data['country_list'] as $key => $value):
                                         ?>
@@ -60,7 +60,7 @@ $commerce = $data['commerce'];
                                             <div class="form-row">
                                                 <div class="col-11 select">
                                                     <select class="form-control" name="companytype[]">
-                                                        <option selected disabled>Выбирите из списка</option>
+                                                        <option selected hidden value="none">Выбирите из списка</option>
                                                         <?php
                                                             foreach ( $companytype AS $value ):
                                                         ?>
@@ -96,7 +96,7 @@ $commerce = $data['commerce'];
                                         <div class="form-row">
                                             <div class="col-11 select">
                                                 <select class="form-control" name="commerce[]">
-                                                    <option selected disabled>Выбирите из списка</option>
+                                                    <option selected hidden value="none">Выбирите из списка</option>
                                                     <?php
                                                         foreach ( $commerce AS $value ):
                                                         if ( $value->name != 'none'):

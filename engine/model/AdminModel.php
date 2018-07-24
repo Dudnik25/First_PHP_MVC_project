@@ -8,10 +8,6 @@ use R;
 
 class AdminModel extends Model {
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function getAdminPageContent($curent_page, $session_id) {
         $limit = 10;
         $iLeft = 4;
@@ -22,9 +18,6 @@ class AdminModel extends Model {
         //$totalPages = 8;
         if ($totalPages != 0) {
             $all = R::findAll('users', 'ORDER BY regdate DESC LIMIT ?,? ',array((($curent_page-1)*$limit),$limit));
-//            echo '<pre>';
-//            print_r($all);
-//            exit();
 
             if (!empty($all)) {
                 $favor = R::findAll('userfavor', 'WHERE user_id = ?', array($session_id));

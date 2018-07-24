@@ -9,10 +9,6 @@ class UserController extends Controller {
 
     private $usermodel;
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function showUserPageAction($id) {
         $this->usermodel = new UserModel($id);
         if ($this->usermodel->checkUserPage()) {
@@ -28,7 +24,7 @@ class UserController extends Controller {
     }
 
     public function showUserSettingsAction() {
-        if ($this->session != '') {
+        if ($this->session != false) {
             $this->usermodel = new UserModel($_SESSION['logged_user']);
             $data = $this->usermodel->checkUserSettings();
             $this->view->showPage('usersettings', $this->template, $this->header, $data);

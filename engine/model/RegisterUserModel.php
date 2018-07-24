@@ -29,6 +29,8 @@ class RegisterUserModel extends Model {
         $companytype_check = $data['companytype_check'];
         $commerce_check = $data['commerce_check'];
 
+        $country = require 'engine/config/country_list.php';
+
         $contact_name = $this->cleanArray($contact_name);
         $contact_surname = $this->cleanArray($contact_surname);
         $contact_position = $this->cleanArray($contact_position);
@@ -58,10 +60,23 @@ class RegisterUserModel extends Model {
         if ( $data['password2'] != $data['password'] ) {
             $errors[] = 'Пароли не совпадают';
         }
-        if ( !isset($data['country']) ) {
+        if ( !isset($data['country']) OR $data['country'] == 'none' ) {
             $errors[] = 'Выбирите страну из списка';
         } else {
-            $this->clean($data['country']);
+            $countyValidate = false;
+            foreach ($country AS $key => $value) {
+                if ( $key == $data['country'] ) {
+                    $countyValidate = true;
+                    break;
+            }
+            if ($countyValidate == true) {
+                $data['country'] = $this->clean($data['country']);
+            } else {
+                $errors[] = 'Код страны не найден';
+            }
+            }
+
+            echo $data['country'];
         }
         if (empty($data['infomin'])) {
             $errors[] = 'Введите краткую информацию о вашей компании';
@@ -98,7 +113,7 @@ class RegisterUserModel extends Model {
             $companytype = $data['companytype'];
             for ($i = 0; $i < 5; $i++) {
                 if ($companytype_check[$i] == 'yes') {
-                    if (!isset($companytype[$i])) {
+                    if ($companytype[$i] == 'none') {
                         $errors[] = 'Выберите тип компании';
                     }
                 }
@@ -111,7 +126,7 @@ class RegisterUserModel extends Model {
             $commerce = $data['commerce'];
             for ($i = 0; $i < 5; $i++) {
                 if ($commerce_check[$i] == 'yes') {
-                    if (!isset($commerce[$i])) {
+                    if ($commerce[$i] == 'none') {
                         $errors[] = 'Выберите комерческие интересы';
                     }
                 }

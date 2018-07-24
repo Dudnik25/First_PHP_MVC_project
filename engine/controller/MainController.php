@@ -6,12 +6,8 @@ use engine\core\Controller;
 
 class MainController extends Controller {
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function showIndexAction() {
-        if ($this->session != '') {
+        if ($this->session != false) {
             header("Location: ". base_url . 'id' . $this->session);
         } else {
             $this->view->showPage('main', $this->template, $this->header);

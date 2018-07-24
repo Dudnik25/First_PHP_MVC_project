@@ -138,7 +138,7 @@ class UserModel extends Model {
         if (empty($data['name'])) {
             $errors[] = 'Введите название вашей компании';
         }
-        if ( !isset($data['country']) ) {
+        if ( !isset($data['country']) OR $data['country'] == 'none') {
             $errors[] = 'Выбирите страну из списка';
         } else {
             $this->clean($data['country']);
@@ -178,7 +178,7 @@ class UserModel extends Model {
             $companytype = $data['companytype'];
             for ($i = 0; $i < 5; $i++) {
                 if ($companytype_check[$i] == 'yes') {
-                    if (!isset($companytype[$i])) {
+                    if ($companytype[$i] == 'none') {
                         $errors[] = 'Выберите тип компании';
                     }
                 }
@@ -191,7 +191,7 @@ class UserModel extends Model {
             $commerce = $data['commerce'];
             for ($i = 0; $i < 5; $i++) {
                 if ($commerce_check[$i] == 'yes') {
-                    if (!isset($commerce[$i])) {
+                    if ($commerce[$i] == 'none') {
                         $errors[] = 'Выберите комерческие интересы';
                     }
                 }
@@ -220,7 +220,7 @@ class UserModel extends Model {
         //Задаем комерческие интересы и удаляем ненужные
         $i = 0;
         foreach ($this->user->ownUsercommerceList as $key => $value) {
-            if (isset($data['commerce'][$i])) {
+            if (isset($data['commerce'][$i]) AND $data['commerce'][$i] != 'none') {
                 $value->commerce = $data['commerce'][$i];
             } else {
                 unset($this->user->xownUsercommerceList[$key]);
@@ -228,7 +228,7 @@ class UserModel extends Model {
             $i++;
         }
         for ( $j = $i; $j < 5; $j++ ) {
-            if (isset($data['commerce'][$j])) {
+            if (isset($data['commerce'][$j]) AND $data['commerce'][$j] != 'none') {
                 $add_commerce = R::dispense('usercommerce');
                 $add_commerce->commerce = $data['commerce'][$j];
                 $this->user->ownUsercommereList[] = $add_commerce;
@@ -237,7 +237,7 @@ class UserModel extends Model {
         //Задаем типы компании и удаляем ненужные
         $i = 0;
         foreach ($this->user->ownUsercompanytypeList as $key => $value) {
-            if (isset($data['companytype'][$i])) {
+            if (isset($data['companytype'][$i]) AND $data['companytype'][$i] != 'none') {
                 $value->companytype = $data['companytype'][$i];
             } else {
                 unset($this->user->xownUsercompanytypeList[$key]);
@@ -245,7 +245,7 @@ class UserModel extends Model {
             $i++;
         }
         for ( $j = $i; $j < 5; $j++ ) {
-            if (isset($data['companytype'][$j])) {
+            if (isset($data['companytype'][$j]) AND $data['companytype'][$j] != 'none') {
                 $add_companytype = R::dispense('usercompanytype');
                 $add_companytype->companytype = $data['companytype'][$j];
                 $this->user->ownUsercompanytypeList[] = $add_companytype;

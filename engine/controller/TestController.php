@@ -8,7 +8,7 @@ class TestController
 
 
     public function TestAction() {
-
-
+        echo '<pre>';
+        print_r($_SERVER);
     }
 }

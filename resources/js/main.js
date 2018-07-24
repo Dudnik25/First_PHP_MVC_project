@@ -84,12 +84,11 @@ $( document ).ready(function() {
                 success: function (result) {
                     var redirect = result.split('===');
                     if (redirect[0] == 'redirect') {
-                        ajax_count = 0;
                         window.location = redirect[1];
                     } else {
                         $(form).find("div.form_error").html(result);
-                        ajax_count = 0;
                     }
+                    ajax_count = 0;'```'
                     form.find("button").attr("disabled", false);
                 },
                 error: function (result) {

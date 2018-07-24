@@ -7,13 +7,13 @@ class Controller {
     protected $view;
     protected $template = 'tamplate_default.php';
     protected $header = 'header.php';
-    protected $session;
+    protected $session = false;
     protected $access = 0;
 
     public function __construct() {
         $this->view = new View();
         $this->session = Model::check_session();
-        if ($this->session != '') {
+        if ($this->session != false) {
             $this->access = Model::check_access();
             if ($this->access == 99) {
                 $this->header = 'admin/header_admin.php';

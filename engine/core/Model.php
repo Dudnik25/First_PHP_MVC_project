@@ -16,7 +16,7 @@ class Model {
         if(isset($_SESSION['logged_user'])) {
             return $_SESSION['logged_user'];
         } else {
-            return '';
+            return false;
         }
     }
 

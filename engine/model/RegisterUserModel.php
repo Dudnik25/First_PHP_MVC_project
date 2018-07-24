@@ -7,10 +7,6 @@ use R;
 
 class RegisterUserModel extends Model {
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function findRegParams() {
         $params['commerce'] = $this->db->findAll('commerce');
         $params['companytype'] = $this->db->findAll('companytype');

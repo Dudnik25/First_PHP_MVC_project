@@ -9,10 +9,6 @@ class UserController extends Controller {
 
     private $usermodel;
 
-    public function __construct() {
-        parent::__construct();
-    }
-
     public function showUserPageAction($id) {
         $this->usermodel = new UserModel($id);
         if ($this->usermodel->checkUserPage()) {
